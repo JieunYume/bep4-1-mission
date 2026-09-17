@@ -3,34 +3,33 @@ package com.back.boundedContext.member.app;
 import com.back.boundedContext.member.domain.Member;
 import com.back.global.exception.DomainException;
 import com.back.boundedContext.member.out.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
-public class MemberService {
+@RequiredArgsConstructor
+public class MemberFacade {
     private final MemberRepository memberRepository;
+    private final MemberJoinUseCase memberJoinUseCase;
 
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
 
     public long count() {
         return memberRepository.count();
     }
 
     public Member join(String username, String password, String nickname) {
-        findByUsername(username).ifPresent(m -> {
-            throw new DomainException("409-1", "이미 존재하는 username 입니다.");
-        });
-
-        return memberRepository.save(new Member(username, password, nickname));
+        return memberJoinUseCase.join(username, password, nickname);
     }
 
+    @Transactional(readOnly = true) // 이건 갑자기 왜 넣지? 그리고 이건 왜 usecase에 넣지 않는가!
     public Optional<Member> findByUsername(String username) {
         return memberRepository.findByUsername(username);
     }
 
+    @Transactional(readOnly = true)
     public Optional<Member> findById(int id) {
         return memberRepository.findById(id);
     }

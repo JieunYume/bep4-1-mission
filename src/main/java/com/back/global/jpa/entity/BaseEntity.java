@@ -7,7 +7,7 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 
-@MappedSuperclass
+@MappedSuperclass // 자식 엔티티에게 공통 컬럼 매핑 정보를 제공한다.(자신은 직접 매핑되지 않음)
 @Getter
 // 모든 엔티티들의 조상
 public abstract class BaseEntity {
