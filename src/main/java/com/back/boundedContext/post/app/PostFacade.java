@@ -13,23 +13,16 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class PostService {
+public class PostFacade {
     private final PostRepository postRepository;
-    private final EventPublisher eventPublisher;
+    private final PostWriteUseCase postWriteUseCase;
 
     public long count() {
         return postRepository.count();
     }
 
     public Post write(Member author, String title, String content) {
-        Post post = new Post(author, title, content);
-        postRepository.save(post);
-
-        eventPublisher.publish(
-                new PostCreatedEvent(new PostDto(post))
-        );
-
-        return post;
+        return postWriteUseCase.write(author, title, content);
     }
 
     public Optional<Post> findById(int id) {
