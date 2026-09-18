@@ -24,7 +24,7 @@ public class PostFacade {
         return postRepository.count();
     }
 
-    public RsData<Post> write(Member author, String title, String content) {
+    public RsData<Post> write(PostMember author, String title, String content) {
         return postWriteUseCase.write(author, title, content);
     }
 
@@ -45,5 +45,10 @@ public class PostFacade {
         );
 
         return postMemberRepository.save(_member);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<PostMember> findMemberByUsername(String username){
+        return postMemberRepository.findByUsername(username);
     }
 }
