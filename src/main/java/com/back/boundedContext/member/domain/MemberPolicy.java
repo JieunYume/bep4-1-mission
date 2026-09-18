@@ -1,8 +1,11 @@
 package com.back.boundedContext.member.domain;
 
+import org.springframework.stereotype.Service;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+@Service //STUDY: 왜 Service일까?
 public class MemberPolicy { // 정책별로 모아둔다.
     private static final int PASSWORD_CHANGE_DAYS = 90;
 
