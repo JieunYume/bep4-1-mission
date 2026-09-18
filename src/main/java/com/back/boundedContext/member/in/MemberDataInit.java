@@ -18,7 +18,7 @@ public class MemberDataInit {
     private final MemberFacade memberFacade;
 
     public MemberDataInit(
-            @Lazy MemberDataInit self,
+            @Lazy MemberDataInit self, //NOTE: @Lazy는 순환 참조를 우회하기 위해서
             MemberFacade memberFacade
     ) {
         this.self = self;
