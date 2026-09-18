@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter // STUDY: 얘는 왜 Getter를 갖지? BaseMember가 갖고있는데 다른건가?
 public class PostMember extends ReplicaMember {
-    public PostMember(int id, LocalDateTime createDate, LocalDateTime modifyDate, String username, String password, String nickname) {
-        super(id, createDate, modifyDate, username, password, nickname);
+    public PostMember(int id, LocalDateTime createDate, LocalDateTime modifyDate, String username, String password, String nickname, int activityScore) {
+        super(id, createDate, modifyDate, username, password, nickname, activityScore);
     }
 }
