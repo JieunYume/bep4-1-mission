@@ -12,12 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name="POST_POST")
 @NoArgsConstructor
 @Getter
 public class Post extends BaseIdAndTime {
     @ManyToOne(fetch = FetchType.LAZY)
     private Member author;
+
     private String title;
+
     @Column(columnDefinition = "LONGTEXT")
     private String content;
 
