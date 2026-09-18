@@ -3,7 +3,7 @@ package com.back.boundedContext.member.domain;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class MemberPolicy {
+public class MemberPolicy { // 정책별로 모아둔다.
     private static final int PASSWORD_CHANGE_DAYS = 90;
 
     public Duration getNeedToChangePasswordPeriod() {
