@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
@@ -18,7 +19,11 @@ public abstract class ReplicaMember extends BaseMember {
     private LocalDateTime createDate;
     private LocalDateTime modifyDate;
 
-    public ReplicaMember(String username, String password, String nickname) {
+    public ReplicaMember(int id, LocalDateTime createdDate, LocalDateTime modifyDate, String username, String password, String nickname) {
         super(username, password, nickname);
+
+        this.id = id;
+        this.createDate = createdDate;
+        this.modifyDate = modifyDate;
     }
 }
