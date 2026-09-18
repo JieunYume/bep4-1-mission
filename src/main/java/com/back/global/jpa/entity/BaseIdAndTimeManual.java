@@ -14,14 +14,10 @@ import java.time.LocalDateTime;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
 @Getter
-public abstract class BaseIdAndTime extends BaseEntity {
-    @Id // NOTE: pk, auto_increment 효과
-    @GeneratedValue(strategy = IDENTITY)
+public abstract class BaseIdAndTimeManual  extends BaseEntity {
+    @Id
     private int id;
-    @CreatedDate
     private LocalDateTime createDate;
-    @LastModifiedDate
     private LocalDateTime modifyDate;
 }
