@@ -4,11 +4,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @MappedSuperclass
 @Getter
+@Setter // NOTE: Setter를 여는 것은 좋지 않다.
 @NoArgsConstructor
 public abstract class ReplicaMember extends BaseMember {
     @Id
