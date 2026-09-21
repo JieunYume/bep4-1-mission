@@ -23,6 +23,7 @@ public class CashFacade {
         return cashSyncMemberUseCase.syncMember(member);
     }
 
+    @Transactional
     public Wallet createWallet(CashMember holder){
         return cashCreateWalletUseCase.createWallet(holder);
     }
