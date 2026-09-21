@@ -13,31 +13,33 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class MemberFacade {
-    private final MemberRepository memberRepository;
     private final MemberJoinUseCase memberJoinUseCase;
-    private final MemberPolicy memberPolicy;
-
-
-    public long count() {
-        return memberRepository.count();
-    }
+    private final MemberGetRandomSecureTipUseCase memberGetRandomSecureTipUseCase;
+    private final MemberSupport memberSupport;
 
     @Transactional
     public RsData<Member> join(String username, String password, String nickname) {
         return memberJoinUseCase.join(username, password, nickname);
     }
 
-    @Transactional(readOnly = true) // 이건 갑자기 왜 넣지? 그리고 이건 왜 usecase에 넣지 않는가!
+    public String getRandomSecureTip() {
+        return memberGetRandomSecureTipUseCase.getRandomSecureTip();
+    }
+
+    @Transactional(readOnly = true)
+    public long count() {
+        return memberSupport.count();
+    }
+
+    @Transactional(readOnly = true) // 이건 왜 usecase에 넣지 않고 Facade에 넣는가!
     public Optional<Member> findByUsername(String username) {
-        return memberRepository.findByUsername(username);
+        return memberSupport.findByUsername(username);
     }
 
     @Transactional(readOnly = true)
     public Optional<Member> findById(int id) {
-        return memberRepository.findById(id);
+        return memberSupport.findById(id);
     }
 
-    public String getRandomSecureTip() {
-        return "비밀번호의 유효기간은 %d일 입니다.".formatted(memberPolicy.getNeedToChangePasswordDays());
-    }
+
 }
