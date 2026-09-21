@@ -28,6 +28,7 @@ public class PostDataInit {
         this.postFacade = postFacade;
     }
 
+    @Bean // NOTE: 빈 등록을 해줘야 자동으로 실행한다!
     @Order(2) // NOTE: ApplicationRunner 중에서 2번째로 실행하라. 1번째로 실행되는 건 MemberDataInit 안에 선언된 메소드다.
     public ApplicationRunner postDataInitApplicationRunner() {
         return args -> {
