@@ -18,8 +18,10 @@ import java.time.LocalDateTime;
 public abstract class BaseManualIdAndTime extends BaseEntity {
     @Id
     private int id;
+
     @CreatedDate
     private LocalDateTime createDate;
+
     @LastModifiedDate
     private LocalDateTime modifyDate;
 
