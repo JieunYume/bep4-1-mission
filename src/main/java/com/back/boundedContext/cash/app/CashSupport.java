@@ -15,13 +15,16 @@ public class CashSupport {
     private final CashMemberRepository cashMemberRepository;
     private final WalletRepository walletRepository;
 
-    @Transactional(readOnly = true)
     public Optional<CashMember> findMemberByUsername(String username) {
         return cashMemberRepository.findByUsername(username);
     }
 
-    @Transactional(readOnly = true)
     public Optional<Wallet> findWalletByHolder(CashMember holder) {
         return walletRepository.findByHolder(holder);
+    }
+
+
+    public Optional<Wallet> findWalletByHolderId(int holderId) {
+        return walletRepository.findByHolderId(holderId);
     }
 }

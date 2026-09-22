@@ -83,6 +83,8 @@ public class MarketFacade {
     public Optional<Order> findOrderById(int id){
         return marketSupport.findOrderById(id);
     }
+
+    @Transactional
     public void requestPayment(Order order, long pgPaymentAmount){
         order.requestPayment(pgPaymentAmount);
     }
