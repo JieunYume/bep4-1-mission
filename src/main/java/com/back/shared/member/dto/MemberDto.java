@@ -15,15 +15,4 @@ public class MemberDto {
     private final String username; // NOTE: password 필드는 제외 - 민감 정보이고, post에서 필요 없기 때문에
     private final String nickname;
     private final int activityScore;
-
-    public MemberDto(Member member) {
-        this(
-                member.getId(),
-                member.getCreateDate(),
-                member.getModifyDate(),
-                member.getUsername(),
-                member.getNickname(),
-                member.getActivityScore()
-        );
-    }
 }

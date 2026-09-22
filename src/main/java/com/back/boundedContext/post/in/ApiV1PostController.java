@@ -24,7 +24,7 @@ public class ApiV1PostController {
         return postFacade
                 .findByOrderByIdDesc()
                 .stream()
-                .map(PostDto::new) // NOTE: new PostDto(post)랑 같다.
+                .map(Post::toDto) // NOTE: new PostDto(post)랑 같다.
                 .toList();
     }
 
@@ -33,7 +33,7 @@ public class ApiV1PostController {
     public PostDto getItem(@PathVariable int id){
         return postFacade
                 .findById(id)
-                .map(PostDto::new) // STUDY: 왜 여기서는 stream을 열지 않는가?
+                .map(Post::toDto) // STUDY: 왜 여기서는 stream을 열지 않는가?
                 .get();
     }
 }
