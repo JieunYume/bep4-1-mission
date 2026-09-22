@@ -1,4 +1,4 @@
-package com.back.shared.cash.in;
+package com.back.boundedContext.cash.in;
 
 import com.back.boundedContext.cash.app.CashFacade;
 import com.back.shared.cash.dto.WalletDto;

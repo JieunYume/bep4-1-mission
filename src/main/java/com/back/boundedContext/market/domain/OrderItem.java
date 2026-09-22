@@ -2,7 +2,6 @@ package com.back.boundedContext.market.domain;
 
 import com.back.global.jpa.entity.BaseIdAndTime;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
