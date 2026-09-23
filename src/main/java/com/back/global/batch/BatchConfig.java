@@ -17,11 +17,11 @@ import javax.sql.DataSource;
 public class BatchConfig {
 
     @Bean
-    @Profile("!prod")
-    public DataSourceInitializer notProdDataSourceInitializer(DataSource dataSource) {
-        ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+    @Profile("!prod") // NOTE: 운영환경이 아닐 때만 실행
+    public DataSourceInitializer notProdDataSourceInitializer(DataSource dataSource) { // NOTE: DataSourceInitializer는 SQL 실행 관리자
+        ResourceDatabasePopulator populator = new ResourceDatabasePopulator(); // NOTE: ResourceDatabasePopulator는 SQL을 준비하는 역할
         populator.addScript(new ClassPathResource("/org/springframework/batch/core/schema-h2.sql"));
-        populator.setContinueOnError(true);
+        populator.setContinueOnError(true); // NOTE: 오류가 발생해도 계속 진행한다. (이미 테이블이 생성된 경우 오류없이 넘어가기 위해 필요한 코드다.)
 
         DataSourceInitializer initializer = new DataSourceInitializer();
         initializer.setDataSource(dataSource);
